@@ -7,6 +7,29 @@
 [![Build Status](https://secure.travis-ci.org/angular-ui/bootstrap.svg)](http://travis-ci.org/angular-ui/bootstrap)
 [![devDependency Status](https://david-dm.org/angular-ui/bootstrap/dev-status.svg?branch=master)](https://david-dm.org/angular-ui/bootstrap#info=devDependencies)
 [![CDNJS](https://img.shields.io/cdnjs/v/angular-ui-bootstrap.svg)](https://cdnjs.com/libraries/angular-ui-bootstrap/)
+<p align="center">
+  <a href="https://gitter.im/jlongster/prettier">
+    <img alt="Gitter" src="https://img.shields.io/gitter/room/jlongster/prettier.svg?style=flat-square">
+  </a>
+  <a href="https://travis-ci.org/prettier/prettier">
+    <img alt="Travis" src="https://img.shields.io/travis/prettier/prettier.svg?style=flat-square">
+  </a>
+  <a href="https://codecov.io/gh/prettier/prettier">
+    <img alt="Codecov" src="https://img.shields.io/codecov/c/github/prettier/prettier.svg?style=flat-square">
+  </a>
+  <a href="https://www.npmjs.com/package/prettier">
+    <img alt="npm version" src="https://img.shields.io/npm/v/prettier.svg?style=flat-square">
+  </a>
+  <a href="https://www.npmjs.com/package/prettier">
+    <img alt="npm version" src="https://img.shields.io/npm/dm/prettier.svg?style=flat-square">
+  </a>
+  <a href="#badge">
+    <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
+  </a>
+  <a href="https://twitter.com/PrettierCode">
+    <img alt="Follow+Prettier+on+Twitter" src="https://img.shields.io/twitter/follow/prettiercode.svg?label=follow+prettier&style=flat-square">
+  </a>
+</p>
 
 ###### 2017年12月8日17:11:04
 - import Local test demo to github
