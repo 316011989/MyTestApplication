@@ -1,6 +1,10 @@
 # MyTestApplication
 - Local project by zhangyilong
 
+[![Build Status](https://travis-ci.org/StreisandEffect/streisand.svg?branch=master)](https://travis-ci.org/StreisandEffect/streisand)
+[![devDependency Status](https://david-dm.org/h5bp/html5-boilerplate/dev-status.svg)](https://david-dm.org/h5bp/html5-boilerplate#info=devDependencies)
+[![can write nothing](https://travis-ci.org/StreisandEffect/streisand.svg?branch=master)](https://www.baidu.com)
+
 ###### 2017年12月8日17:11:04
 - import Local test demo to github
 - this demo include many feature
@@ -63,8 +67,7 @@ allprojects {
 
 ![](http://upload-images.jianshu.io/upload_images/259-90ac0f366310f464.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)
 
-[![Build Status](https://travis-ci.org/StreisandEffect/streisand.svg?branch=master)](https://travis-ci.org/StreisandEffect/streisand)
-[![devDependency Status](https://david-dm.org/h5bp/html5-boilerplate/dev-status.svg)](https://david-dm.org/h5bp/html5-boilerplate#info=devDependencies)
+
 
 表格||中添加:代表左右对齐
 
