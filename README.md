@@ -7,10 +7,10 @@
 下边这些标签是copy其他开源项目的  
 [![Build Status](https://travis-ci.org/StreisandEffect/streisand.svg?branch=master)](https://travis-ci.org/StreisandEffect/streisand)  
 - Porject Infos  
-[![](https://img.shields.io/github/issues/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/issues)  
-[![](https://img.shields.io/github/forks/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/network)  
-[![](https://img.shields.io/github/stars/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/stargazers)  
-[![](https://travis-ci.org/316011989/MyTestApplication.svg?branch=master)](https://travis-ci.org/316011989/MyTestApplication.svg) 
+[![](https://img.shields.io/github/issues/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/issues)
+[![](https://img.shields.io/github/forks/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/network)
+[![](https://img.shields.io/github/stars/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/stargazers)
+[![](https://travis-ci.org/316011989/MyTestApplication.svg?branch=master)](https://travis-ci.org/316011989/MyTestApplication.svg)
 [![](https://img.shields.io/github/release/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/releases)
   
   
