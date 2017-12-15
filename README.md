@@ -2,9 +2,8 @@
 - Local project by zhangyilong  
 下边这种加标签是可以自定义的进度的  
 [![progressbar](http://progressed.io/bar/1?title=progressed)](https://www.baidu.com)  
-下边这种加标签是可以自定义的  
-[![zhangyilong](https://img.shields.io/badge/zhang-yilong-green.svg)](https://www.baidu.com)
-[![zhangyilong](https://img.shields.io/badge/zhang-yilong-green.svg?style=flat-square)](https://www.baidu.com)  
+- Author  
+[![zhangyilong](https://img.shields.io/badge/zhang-yilong-green.svg?style=for-the-badge)]()
 下边这些标签是copy其他开源项目的  
 [![Build Status](https://travis-ci.org/StreisandEffect/streisand.svg?branch=master)](https://travis-ci.org/StreisandEffect/streisand)
 [![devDependency Status](https://david-dm.org/h5bp/html5-boilerplate/dev-status.svg)](https://david-dm.org/h5bp/html5-boilerplate#info=devDependencies)
