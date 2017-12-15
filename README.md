@@ -48,10 +48,6 @@ public void method（params[] args）{
 }
 ```
 
-*斜体文字*
-
-**粗体文字**
-
 [链接](http://www.baidu.com)  
 
 图片  
