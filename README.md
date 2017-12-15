@@ -2,7 +2,7 @@
 - Local project by zhangyilong
 
 - 下边这种加标签是可以自定义的进度的
-[![progressbar](http://progressed.io/bar/28?title=progressed)](https://www.baidu.com)
+[![progressbar](http://progressed.io/bar/28?title=progressed&style=-square)](https://www.baidu.com)
 - 下边这种加标签是可以自定义的
 [![zhangyilong](https://img.shields.io/badge/zhang-yilong-green.svg)](https://www.baidu.com)
 - 下边这些标签是copy其他开源项目的
