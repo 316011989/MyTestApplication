@@ -16,29 +16,7 @@
 [![devDependency Status](https://david-dm.org/angular-ui/bootstrap/dev-status.svg?branch=master)](https://david-dm.org/angular-ui/bootstrap#info=devDependencies)
 [![CDNJS](https://img.shields.io/cdnjs/v/angular-ui-bootstrap.svg)](https://cdnjs.com/libraries/angular-ui-bootstrap/)
 [![html转markdown](https://img.shields.io/gitter/room/jlongster/prettier.svg?style=flat-square)](https://gitter.im/jlongster/prettier)
-<p align="center">
-  <a href="https://gitter.im/jlongster/prettier">
-    <img alt="Gitter" src="https://img.shields.io/gitter/room/jlongster/prettier.svg?style=flat-square">
-  </a>
-  <a href="https://travis-ci.org/prettier/prettier">
-    <img alt="Travis" src="https://img.shields.io/travis/prettier/prettier.svg?style=flat-square">
-  </a>
-  <a href="https://codecov.io/gh/prettier/prettier">
-    <img alt="Codecov" src="https://img.shields.io/codecov/c/github/prettier/prettier.svg?style=flat-square">
-  </a>
-  <a href="https://www.npmjs.com/package/prettier">
-    <img alt="npm version" src="https://img.shields.io/npm/v/prettier.svg?style=flat-square">
-  </a>
-  <a href="https://www.npmjs.com/package/prettier">
-    <img alt="npm version" src="https://img.shields.io/npm/dm/prettier.svg?style=flat-square">
-  </a>
-  <a href="#badge">
-    <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
-  </a>
-  <a href="https://twitter.com/PrettierCode">
-    <img alt="Follow+Prettier+on+Twitter" src="https://img.shields.io/twitter/follow/prettiercode.svg?label=follow+prettier&style=flat-square">
-  </a>
-</p>
+
 
 ###### 2017年12月8日17:11:04
 - import Local test demo to github
@@ -46,23 +24,15 @@
 1. >*dbutil*
 2. >**sophix**
 3. >tbs
-
-
-
-
-
-
-
-
-
-
+  
 > ####github这么高端的平台最近才开始上传项目，自我批评(还可以互相组合，这是引用加标题)
 #####markdown语法也刚刚接触，下边记录一下使用方法，方便写readme
 ######井号代表Title，数量代表title的级别
 
-- 代表列表，无序
-* 貌似也是代表无序列表的
+- 无序列表
+* 无序列表
 - - 这第二个是空心的（自我研究发现的，可以两个叠加，再多就不行了）
+
 > 引用 
 
 `
@@ -84,10 +54,10 @@ public void method（params[] args）{
 
 **粗体文字**
 
-[链接百度](http://www.baidu.com)  
+[链接](http://www.baidu.com)  
 
 图片  
-![](http://upload-images.jianshu.io/upload_images/259-90ac0f366310f464.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)    
+![](https://avatars2.githubusercontent.com/u/5856754?s=40&v=4)    
 
 表格  
 
