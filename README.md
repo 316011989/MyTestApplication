@@ -98,14 +98,12 @@ allprojects {
 
 **粗体**
 
-[链接百度](http://www.baidu.com)
+[链接百度](http://www.baidu.com)  
 
-![](http://upload-images.jianshu.io/upload_images/259-90ac0f366310f464.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)
+图片  
+![](http://upload-images.jianshu.io/upload_images/259-90ac0f366310f464.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)    
 
-
-
-表格||中添加:代表左右对齐
-
+表格
 |title1|title2|title3|
 |:--:|--:|:--|
 |raw1line1|raw2line1|raw3line1|
