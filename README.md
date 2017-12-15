@@ -5,20 +5,13 @@
 - Author  
 [![zhangyilong](https://img.shields.io/badge/zhang-yilong-green.svg?style=for-the-badge)]()  
 下边这些标签是copy其他开源项目的  
-[![Build Status](https://travis-ci.org/StreisandEffect/streisand.svg?branch=master)](https://travis-ci.org/StreisandEffect/streisand)
-[![devDependency Status](https://david-dm.org/h5bp/html5-boilerplate/dev-status.svg)](https://david-dm.org/h5bp/html5-boilerplate#info=devDependencies)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angular-ui/bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://secure.travis-ci.org/angular-ui/bootstrap.svg)](http://travis-ci.org/angular-ui/bootstrap)
-[![devDependency Status](https://david-dm.org/angular-ui/bootstrap/dev-status.svg?branch=master)](https://david-dm.org/angular-ui/bootstrap#info=devDependencies)
-[![CDNJS](https://img.shields.io/cdnjs/v/angular-ui-bootstrap.svg)](https://cdnjs.com/libraries/angular-ui-bootstrap/)
-[![html转markdown](https://img.shields.io/gitter/room/jlongster/prettier.svg?style=flat-square)](https://gitter.im/jlongster/prettier)
-
-  
-  [![](https://img.shields.io/github/issues/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/issues) 
-  [![](https://img.shields.io/github/forks/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/network)
-  [![](https://img.shields.io/github/stars/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/stargazers)
-  [![](https://travis-ci.org/316011989/MyTestApplication.svg?branch=master)](https://travis-ci.org/316011989/MyTestApplication.svg) 
-  [![](https://img.shields.io/github/release/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/releases)
+[![Build Status](https://travis-ci.org/StreisandEffect/streisand.svg?branch=master)](https://travis-ci.org/StreisandEffect/streisand)  
+- Porject Infos  
+[![](https://img.shields.io/github/issues/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/issues)  
+[![](https://img.shields.io/github/forks/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/network)  
+[![](https://img.shields.io/github/stars/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/stargazers)  
+[![](https://travis-ci.org/316011989/MyTestApplication.svg?branch=master)](https://travis-ci.org/316011989/MyTestApplication.svg) 
+[![](https://img.shields.io/github/release/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/releases)
   
   
 ###### 2017年12月8日17:11:04
