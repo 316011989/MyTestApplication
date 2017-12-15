@@ -67,36 +67,22 @@
 
 `
 //不换行代码引用
-allprojects {
-     repositories {
-         maven {
-             url "http://maven.aliyun.com/nexus/content/repositories/releases"
-         }
-         jcenter()
-         mavenCentral()
-         google()
-     }
- }`
- 
- 
-
+public void method（params[] args）{
+  //TODO
+}
+ `
+   
+   
 ```
 //换行代码引用
-allprojects {
-    repositories {
-        maven {
-            url "http://maven.aliyun.com/nexus/content/repositories/releases"
-        }
-        jcenter()
-        mavenCentral()
-        google()
-    }
+public void method（params[] args）{
+  //TODO
 }
 ```
 
-*斜体*
+*斜体文字*
 
-**粗体**
+**粗体文字**
 
 [链接百度](http://www.baidu.com)  
 
