@@ -4,8 +4,6 @@
 [![progressbar](http://progressed.io/bar/1?title=progressed)](https://www.baidu.com)  
 - Author  
 [![zhangyilong](https://img.shields.io/badge/zhang-yilong-green.svg?style=for-the-badge)]()  
-下边这些标签是copy其他开源项目的  
-[![Build Status](https://travis-ci.org/StreisandEffect/streisand.svg?branch=master)](https://travis-ci.org/StreisandEffect/streisand)  
 - Porject Infos  
 [![](https://img.shields.io/github/issues/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/issues)
 [![](https://img.shields.io/github/forks/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication.svg/network)
