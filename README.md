@@ -106,14 +106,9 @@ allprojects {
 
 表格||中添加:代表左右对齐
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+|title1|title2|title3|
+|:--:|--:|:--|
+|raw1line1|raw2line1|raw3line1|
+|raw1line2|raw2line2|raw3line2|
 
-dog | bird | cat
-----|------|----
-foo | foo  | foo
-bar | bar  | bar
-baz | baz  | baz
+
