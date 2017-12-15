@@ -8,8 +8,8 @@
 [![](https://img.shields.io/github/issues/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication/issues)
 [![](https://img.shields.io/github/forks/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication/network)
 [![](https://img.shields.io/github/stars/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication/stargazers)
-[![](https://travis-ci.org/316011989/MyTestApplication.svg?branch=master)](https://travis-ci.org/316011989/MyTestApplication)
-[![](https://img.shields.io/github/release/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication/releases)
+[![](https://img.shields.io/github/release/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication/releases).
+[![](https://img.shields.io/github/tag/316011989/MyTestApplication.svg)](https://github.com/316011989/MyTestApplication/tag)
   
   
 ###### 2017年12月8日17:11:04
