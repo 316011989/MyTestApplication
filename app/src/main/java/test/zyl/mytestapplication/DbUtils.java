@@ -14,6 +14,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Data;
+
 /**
  * Created by zhangyl on 2016/9/12.
  */
