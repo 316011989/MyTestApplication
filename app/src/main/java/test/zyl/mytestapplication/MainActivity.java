@@ -3,17 +3,15 @@ package test.zyl.mytestapplication;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
-import java.util.ArrayList;
-
 import lombok.Data;
+import sdk.HistoryTravelResponse;
+import sdk.LineResponse;
+import sdk.Sdk;
 
 @SuppressLint({
         "JavascriptInterface", "SetJavaScriptEnabled"
@@ -25,13 +23,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //热修复操作
-        sophix();
+//        sophix();
         setContentView(R.layout.activity_main);
-//        //数据库操作
+        //数据库操作
 //        openDB();
 
         //webview操作
 //        webviewShow();
+
+        //sdk.aar测试
+        testAAR();
+    }
+
+    private void testAAR() {
+        Sdk.setUserToken("3385e148f88d927eaa3bb55e5cf0ea30900d7049");
+        HistoryTravelResponse recentLine = Sdk.getRecentLine(2592);
+        System.out.print(recentLine);
     }
 
     /**
@@ -68,10 +75,11 @@ public class MainActivity extends AppCompatActivity {
     private void insertDbData() {
         DbUtils db = new DbUtils(this);
 
-        ArrayList<IntlCityBean> hotelList = db.getData2List("intl_city", IntlCityBean.class);
-        Gson gson = new Gson();
-        String jsonStr = gson.toJson(hotelList);
-        Log.e("MainActivity", jsonStr);
+//        ArrayList<IntlCityBean> hotelList = db.getData2List("intl_city", IntlCityBean.class);
+//        Gson gson = new Gson();
+//        String jsonStr = gson.toJson(hotelList);
+//        Log.e("MainActivity", jsonStr);
+
 
 //        ArrayList<ApprovalCityBean> hotelList = db.getData2List("approval_city", ApprovalCityBean.class);
 //        Gson gson = new Gson();

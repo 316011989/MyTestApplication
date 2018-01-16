@@ -100,7 +100,7 @@ public class PinyinUtil {
                 // 判断是否为汉字字符
                 if (Character.toString(t1[i]).matches(
                         "[\\u4E00-\\u9FA5]+")) {
-                    t4 += CharacterParser.getInstance().getFirstSell(t1[i] + "");
+                    t4 += CharacterParser.Companion.getInstance().getFirstSell(t1[i] + "");
                 }
             }
             return t4;
