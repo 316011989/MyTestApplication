@@ -72,6 +72,7 @@ public class DbUtils {
     }
 
 
+
     public void initCityTable() {
         db.execSQL("CREATE TABLE IF NOT EXISTS city_train(" +
                 "_id integer  PRIMARY KEY AUTOINCREMENT DEFAULT NULL," +
@@ -82,16 +83,16 @@ public class DbUtils {
     }
 
 
-    public void insertCitiesToTable(SQLBean list) {
-        ArrayList<SQLBean.Content> content = list.getContent();
-        for (int i = 0; i < content.size(); i++) {
-            for (int j = 0; j < content.get(i).getValue().size(); j++) {
-                SQLBean.Content.CitiesBean b = content.get(i).getValue().get(j);
-                db.execSQL("insert into city_train (cityName, cityCode ,first_spelling,first_spells,all_spells) VALUES ('"
-                        + b.getName() + "', '" + b.getCode() + "','" + b.getFirst_spelling() + "','" + b.getFirst_spells() + "','" + b.getAll_spells() + "')");
-            }
-        }
-    }
+//    public void insertCitiesToTable(SQLBean list) {
+//        ArrayList<SQLBean.Content> content = list.getContent();
+//        for (int i = 0; i < content.size(); i++) {
+//            for (int j = 0; j < content.get(i).getValue().size(); j++) {
+//                SQLBean.Content.CitiesBean b = content.get(i).getValue().get(j);
+//                db.execSQL("insert into city_train (cityName, cityCode ,first_spelling,first_spells,all_spells) VALUES ('"
+//                        + b.getName() + "', '" + b.getCode() + "','" + b.getFirst_spelling() + "','" + b.getFirst_spells() + "','" + b.getAll_spells() + "')");
+//            }
+//        }
+//    }
 
     public <C> ArrayList<C> getData2List(String dbName, Class<C> cls) {
         ArrayList<C> list = new ArrayList<>();

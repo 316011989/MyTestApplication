@@ -80,11 +80,11 @@ public class PinyinUtil {
                     t4 += t2[0];
                 }
             }
-            return t4;
+            return t4.toUpperCase();
         } catch (BadHanyuPinyinOutputFormatCombination e1) {
             e1.printStackTrace();
         }
-        return t4;
+        return t4.toUpperCase();
     }
 
 
@@ -103,11 +103,11 @@ public class PinyinUtil {
                     t4 += CharacterParser.Companion.getInstance().getFirstSell(t1[i] + "");
                 }
             }
-            return t4;
+            return t4.toUpperCase();
         } catch (Exception e1) {
             e1.printStackTrace();
         }
-        return t4;
+        return t4.toUpperCase();
     }
 
 

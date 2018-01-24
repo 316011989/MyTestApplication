@@ -22,6 +22,7 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -44,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
 //        sophix();
         setContentView(R.layout.activity_main);
         //数据库操作
-//        openDB();
+        openDB();
 
         //webview操作
-        webviewShow();
+//        webviewShow();
 
         //sdk.aar测试
 //        testAAR();
@@ -89,9 +90,9 @@ public class MainActivity extends AppCompatActivity {
                 super.onPageFinished(webView, s);
                 //如果是首页,加载完成后自动填写
                 if (s.contains("login.do")) {
-                    webview.loadUrl("javascript:$('.form-group').eq(0).find('input').val('陈何珍');" +
-                            "$('.form-group').eq(1).find('input').val('7812431411234');" +
-                            "$('.form-group').eq(2).find('input').val('15020227830');" +
+                    webview.loadUrl("javascript:$('.form-group').eq(0).find('input').val('李西林');" +
+                            "$('.form-group').eq(1).find('input').val('880-5159492978');" +
+                            "$('.form-group').eq(2).find('input').val('13523237067');" +
                             "preSubmit();");
                 } else {
                     webview.setVisibility(View.VISIBLE);
@@ -149,6 +150,20 @@ public class MainActivity extends AppCompatActivity {
      */
     private void insertDbData() {
         DbUtils db = new DbUtils(this);
+
+        SQLBean bean = new Gson().fromJson(SQLBean.getJsonStr(), SQLBean.class);
+        List<SQLBean.ContentBean> contents = bean.getContent();
+        for (int i = 0; i < contents.size(); i++) {
+            String letter = contents.get(i).getLetter();
+            List<SQLBean.ContentBean.ValueBean> values = contents.get(i).getValue();
+            for (int j = 0; j < values.size(); j++) {
+                String code = values.get(j).getCode();
+                String name = values.get(j).getName();
+                db.insertCity("city_train",
+                        new String[]{"cityName", "cityCode", "first_spelling", "first_spells", "all_spells"},
+                        new String[]{name, code, letter.toUpperCase(), PinyinUtil.getPinYinFirst(name), PinyinUtil.getPinYin(name)});
+            }
+        }
 
 //        ArrayList<IntlCityBean> hotelList = db.getData2List("intl_city", IntlCityBean.class);
 //        Gson gson = new Gson();
