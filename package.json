@@ -1,0 +1,25 @@
+{
+  "name": "mytestapplication",
+  "version": "1.0.0",
+  "description": "- Author  \r [![zhangyilong](https://img.shields.io/badge/zhang-yilong-green.svg?style=for-the-badge)]()  \r - develope progress  \r [![progressbar](http://progressed.io/bar/47?title=progressed)](https://www.baidu.com)  \r - Porject Infos  \r [![](https://img.shields.io/github/issues/316011989/MyTestApplication.svg?style=flat-square)](https://github.com/316011989/MyTestApplication/issues)\r [![](https://img.shields.io/github/forks/316011989/MyTestApplication.svg?style=flat-square)](https://github.com/316011989/MyTestApplication/network)\r [![](https://img.shields.io/github/stars/316011989/MyTestApplication.svg?style=flat-square)](https://github.com/316011989/MyTestApplication/stargazers)\r [![](https://img.shields.io/github/release/316011989/MyTestApplication.svg?style=flat-square)](https://github.com/316011989/MyTestApplication/releases).\r [![](https://img.shields.io/github/tag/316011989/MyTestApplication.svg?style=flat-square)](https://github.com/316011989/MyTestApplication/tag)",
+  "main": "index.android.js",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "bundle-android": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output app/src/main/assets/index.android.bundle --assets-dest app/src/main/res/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/316011989/MyTestApplication.git"
+  },
+  "author": "zhangyl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/316011989/MyTestApplication/issues"
+  },
+  "homepage": "https://github.com/316011989/MyTestApplication#readme",
+  "dependencies": {
+    "react": "^16.4.0",
+    "react-native": "^0.55.4"
+  }
+}

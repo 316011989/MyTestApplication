@@ -1,10 +1,15 @@
 package test.zyl.mytestapplication;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
+
+import com.apkfuns.logutils.LogUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,16 +32,21 @@ public class DbUtils {
 
     public DbUtils(Context context) {
         this.context = context;
-
-        helper = new SQLiteOpenHelper(context, "xingyun.db", null, 5) {
+        helper = new SQLiteOpenHelper(context, "xingyun.db", null, 1) {
             @Override
             public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+                LogUtils.e("数据库创建");
             }
 
             @Override
             public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+                LogUtils.e("数据库升级");
+            }
 
+            @Override
+            public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+//                super.onDowngrade(db, oldVersion, newVersion);
+                LogUtils.e("数据库降级");
             }
         };
         //因为getWritableDatabase内部调用了mContext.openOrCreateDatabase(mName, 0, mFactory);
@@ -70,7 +80,6 @@ public class DbUtils {
             e.printStackTrace();
         }
     }
-
 
 
     public void initCityTable() {
@@ -165,26 +174,13 @@ public class DbUtils {
      * @param keyValue  关键字值
      */
     public void updateCity(String tableName, String[] colums, String[] values, String keyName, String keyValue) {
-        StringBuilder sqlStr = new StringBuilder();
-        sqlStr.append("update ");
-        sqlStr.append(tableName);
+        //使用db的update方法进行update
+        ContentValues cv = new ContentValues();
         if (colums != null && values != null && colums.length == values.length) {
-            sqlStr.append(" set ");
             for (int i = 0; i < colums.length; i++) {
-                sqlStr.append(colums[i]);
-                sqlStr.append(" = '");
-                sqlStr.append(values[i]);
-                sqlStr.append("'");
-                if (i + 1 < colums.length)
-                    sqlStr.append(" , ");
+                cv.put(colums[i], values[i]);
             }
-            sqlStr.append(" where ");
-            sqlStr.append(keyName);
-            sqlStr.append(" = '");
-            sqlStr.append(keyValue + "'");
-            db.execSQL(sqlStr.toString());
-        } else {
-            Toast.makeText(context, "修改字段或值不正确", Toast.LENGTH_SHORT).show();
+            db.update(tableName, cv, keyName + " = ?", new String[]{keyValue});
         }
     }
 
@@ -201,28 +197,15 @@ public class DbUtils {
      * @param values    要修改的值
      */
     public void insertCity(String tableName, String[] colums, String[] values) {
-        StringBuilder sqlStr = new StringBuilder();
         if (colums != null && values != null && colums.length == values.length) {
-            sqlStr.append("insert into ");//INSERT INTO
-            sqlStr.append(tableName);//`xingyun_bank`
-            sqlStr.append(" ( ");//(
-            for (int i = 0; i < colums.length; i++) {//'city_name','first_spelling','first_spells','all_spells'
-                sqlStr.append("'");
-                sqlStr.append(colums[i]);
-                sqlStr.append("'");
-                if (i + 1 < colums.length)
-                    sqlStr.append(" , ");
+            ContentValues cv = new ContentValues();
+            for (int i = 0; i < colums.length; i++) {
+                cv.put(colums[i], values[i]);
             }
-            sqlStr.append(" ) VALUES  ( ");//) VALUES (
-            for (int i = 0; i < colums.length; i++) {//'中国人民银行', 'Z', 'ZGRMYH', 'ZHONGGUORENMINYINHANG'
-                sqlStr.append("'");
-                sqlStr.append(values[i]);
-                sqlStr.append("'");
-                if (i + 1 < colums.length)
-                    sqlStr.append(" , ");
+            if (db.insert(tableName, null, cv) == 0) {
+                LogUtils.e(cv.get("xycode"));
+
             }
-            sqlStr.append(" ) ");//)
-            db.execSQL(sqlStr.toString());
         } else {
             Toast.makeText(context, "修改字段或值不正确", Toast.LENGTH_SHORT).show();
         }

@@ -1,15 +1,21 @@
 package test.zyl.mytestapplication;
 
 import android.annotation.SuppressLint;
+import android.arch.lifecycle.Observer;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Looper;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.apkfuns.logutils.LogUtils;
 import com.google.gson.Gson;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebView;
@@ -30,28 +36,56 @@ import javax.net.ssl.HttpsURLConnection;
 import lombok.Data;
 import sdk.LineResponse;
 import sdk.Sdk;
+import test.zyl.mytestapplication.databinding.ActivityMainBinding;
+import test.zyl.mytestapplication.http.DBViewModel;
+import test.zyl.mytestapplication.http.DbData;
 
 @SuppressLint({
         "JavascriptInterface", "SetJavaScriptEnabled"
 })
 public class MainActivity extends AppCompatActivity {
+    ActivityMainBinding binding;
+    DBViewModel model;
     private X5WebView webview;
-    String responseData = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //热修复操作
 //        sophix();
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
         //数据库操作
-        openDB();
+//        openDB();
 
         //webview操作
 //        webviewShow();
 
         //sdk.aar测试
 //        testAAR();
+
+        //http测试
+        testHttp();
+    }
+
+    DbData dbData;
+
+    private void testHttp() {
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        SharedPreferences dbVersion = getSharedPreferences("dbVersion", Context.MODE_PRIVATE);
+        int citysVersion = dbVersion.getInt("citysVersion", 0);
+        int locationsVersion = dbVersion.getInt("locationsVersion", 0);
+        model = new DBViewModel(getApplication(), citysVersion, locationsVersion);
+        //订阅数据变化来刷新UI
+        model.getLiveObservableData().observe(this, new Observer<DbData>() {
+            @Override
+            public void onChanged(@Nullable DbData data) {
+                model.setUiObservableData(data);
+                binding.setData(data);
+                dbData = data;
+                openDB();
+            }
+        });
     }
 
     private void testAAR() {
@@ -150,20 +184,80 @@ public class MainActivity extends AppCompatActivity {
      */
     private void insertDbData() {
         DbUtils db = new DbUtils(this);
+        //接口请求成功
+        if (dbData != null && dbData.getResult() != null) {
+            //citys数据不为空
+            if (dbData.getResult().getCitys() != null) {
+                List<DbData.ResultBean.CitysBean.cBean> insert_citys = dbData.getResult().getCitys().getInserts();
+                if (insert_citys != null)
+                    for (int i = 0; i < insert_citys.size(); i++) {
+                        DbData.ResultBean.CitysBean.cBean c = insert_citys.get(i);
+                        db.insertCity("t_base_citys",
+                                new String[]{"xycode", "nation_code", "name", "short_name", "english_name", "short_spell", "first_letter", "air_code", "train_code"
+                                        , "post_code", "taxi", "long_bus", "tags", "enabled"},
+                                new String[]{c.getXycode(), c.getNation_code(), c.getName(), c.getShort_name(), c.getEnglish_name(), c.getShort_spell(), c.getFirst_letter(), c.getAir_code()
+                                        , c.getTrain_code(), c.getPost_code(), c.getTaxi(), c.getLong_bus(), c.getTags(), c.getEnabled()});
+                        LogUtils.e("插入t_base_citys,城市名称" + c.getName());
+                    }
 
-        SQLBean bean = new Gson().fromJson(SQLBean.getJsonStr(), SQLBean.class);
-        List<SQLBean.ContentBean> contents = bean.getContent();
-        for (int i = 0; i < contents.size(); i++) {
-            String letter = contents.get(i).getLetter();
-            List<SQLBean.ContentBean.ValueBean> values = contents.get(i).getValue();
-            for (int j = 0; j < values.size(); j++) {
-                String code = values.get(j).getCode();
-                String name = values.get(j).getName();
-                db.insertCity("city_train",
-                        new String[]{"cityName", "cityCode", "first_spelling", "first_spells", "all_spells"},
-                        new String[]{name, code, letter.toUpperCase(), PinyinUtil.getPinYinFirst(name), PinyinUtil.getPinYin(name)});
+                List<DbData.ResultBean.CitysBean.cBean> update_citys = dbData.getResult().getCitys().getUpdates();
+                if (update_citys != null)
+                    for (int i = 0; i < update_citys.size(); i++) {
+                        DbData.ResultBean.CitysBean.cBean c = update_citys.get(i);
+                        db.updateCity("t_base_citys",
+                                new String[]{"xycode", "nation_code", "name", "short_name", "english_name", "short_spell", "first_letter", "air_code", "train_code"
+                                        , "post_code", "taxi", "long_bus", "tags", "enabled"},
+                                new String[]{c.getXycode(), c.getNation_code(), c.getName(), c.getShort_name(), c.getEnglish_name(), c.getShort_spell(), c.getFirst_letter(), c.getAir_code()
+                                        , c.getTrain_code(), c.getPost_code(), c.getTaxi(), c.getLong_bus(), c.getTags(), c.getEnabled()},
+                                "xycode", c.getXycode());
+                        LogUtils.e("更新t_base_citys,城市名称" + c.getName());
+                    }
+                int citysVersion = dbData.getResult().getCitys().getVersion();
+                SharedPreferences sp = getSharedPreferences("dbVersion", MODE_PRIVATE);
+                sp.edit().putInt("citysVersion", citysVersion).commit();
+
+            }
+            //locations数据不为空
+            if (dbData.getResult().getLocations() != null) {
+                List<DbData.ResultBean.LocationsBean.lBean> insert_locations = dbData.getResult().getLocations().getInserts();
+                if (insert_locations != null)
+                    for (int i = 0; i < insert_locations.size(); i++) {
+                        DbData.ResultBean.LocationsBean.lBean l = insert_locations.get(i);
+                        db.insertCity("t_base_locations",
+                                new String[]{"id", "catalog", "code", "name", "xycode", "lng", "lat", "enabled"},
+                                new String[]{l.getId(), l.getCatalog(), l.getCode(), l.getName(), l.getXycode(), l.getLng(), l.getLat(), l.getEnabled()});
+                        LogUtils.e("插入t_base_locations,位置名称" + l.getName());
+                    }
+
+                List<DbData.ResultBean.LocationsBean.lBean> update_locations = dbData.getResult().getLocations().getUpdates();
+                if (update_locations != null)
+                    for (int i = 0; i < update_locations.size(); i++) {
+                        DbData.ResultBean.LocationsBean.lBean l = update_locations.get(i);
+                        db.updateCity("t_base_locations", new String[]{"id", "catalog", "code", "name", "xycode", "lng", "lat", "enabled"},
+                                new String[]{l.getId(), l.getCatalog(), l.getCode(), l.getName(), l.getXycode(), l.getLng(), l.getLat(), l.getEnabled()},
+                                "id", l.getId());
+                        LogUtils.e("更新t_base_locations,位置名称" + l.getName());
+                    }
+                int locationsVersion = dbData.getResult().getLocations().getVersion();
+                SharedPreferences sp = getSharedPreferences("dbVersion", MODE_PRIVATE);
+                sp.edit().putInt("locationsVersion", locationsVersion).commit();
             }
         }
+
+
+//        SQLBean bean = new Gson().fromJson(SQLBean.getJsonStr(), SQLBean.class);
+//        List<SQLBean.ContentBean> contents = bean.getContent();
+//        for (int i = 0; i < contents.size(); i++) {
+//            String letter = contents.get(i).getLetter();
+//            List<SQLBean.ContentBean.ValueBean> values = contents.get(i).getValue();
+//            for (int j = 0; j < values.size(); j++) {
+//                String code = values.get(j).getCode();
+//                String name = values.get(j).getName();
+//                db.insertCity("city_train",
+//                        new String[]{"cityName", "cityCode", "first_spelling", "first_spells", "all_spells"},
+//                        new String[]{name, code, letter.toUpperCase(), PinyinUtil.getPinYinFirst(name), PinyinUtil.getPinYin(name)});
+//            }
+//        }
 
 //        ArrayList<IntlCityBean> hotelList = db.getData2List("intl_city", IntlCityBean.class);
 //        Gson gson = new Gson();
