@@ -36,6 +36,7 @@ versions.facebook = "1.9.0"
 versions.gson = "2.8.0"
 versions.lombok = "1.16.20"
 versions.sophix = "3.1.5"
+versions.react_native = "0.55.4"
 def deps = [:]
 
 def support = [:]
@@ -138,6 +139,7 @@ deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_g
 deps.gson = "com.google.code.gson:gson:$versions.gson"
 deps.lombok = "org.projectlombok:lombok:$versions.lombok"
 deps.sophix = "com.aliyun.ams:alicloud-android-hotfix:$versions.sophix"
+deps.react_naive = "com.facebook.react:react-native:$versions.react_native"
 ext.deps = deps
 
 def build_versions = [:]
@@ -153,7 +155,6 @@ def addRepos(RepositoryHandler handler) {
 //    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     handler.maven { url 'https://oss.jfrog.org/libs-snapshot' }
     handler.maven { url 'https://jitpack.io' }
-
 }
 
 ext.addRepos = this.&addRepos

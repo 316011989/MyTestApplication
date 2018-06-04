@@ -92,6 +92,6 @@ dependencies {
     //logutils
     implementation deps.logutils
     //compile
-    implementation "com.facebook.react:react-native:0.55.4"
+    implementation deps.react_naive
 }
 
