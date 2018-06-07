@@ -76,7 +76,7 @@ dependencies {
     //没有使用
 //    implementation files('libs/httpcore-4.3.2.jar')
     //com.android.support:appcompat-v7:27.1.1
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation deps.support.app_compat
     //com.facebook.fresco:fresco:1.9.0
     implementation deps.facebook.fresco
     //com.facebook.fresco:animated-gif:1.9.0

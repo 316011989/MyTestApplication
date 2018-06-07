@@ -20,6 +20,8 @@
   "homepage": "https://github.com/316011989/MyTestApplication#readme",
   "dependencies": {
     "react": "^16.4.0",
-    "react-native": "^0.55.4"
+    "react-native": "^0.55.4",
+    "react-native-deprecated-custom-components": "github:facebookarchive/react-native-custom-components",
+    "react-navigation": "^2.2.3"
   }
 }

@@ -1,23 +1,42 @@
-import React from 'react';
-import {AppRegistry, StyleSheet, Text, View} from 'react-native';
-class HelloWorld extends React.Component {
-render() {
-return (
-<View style={styles.container}>
-       <Text style={styles.hello}>Hello, World</Text>
-       </View>
-);
+
+import React, {
+  Component,
+} from 'react';
+//引入component和UI组件
+import {
+  AppRegistry,
+  Text,
+  View,
+  Button,
+} from 'react-native';
+import { StackNavigator } from 'react-navigation';
+
+// {/**引入ChatScreen组件 */}
+import ChatScreen from './module_coach/CoachMain';
+
+
+class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Welcome',
+  };
+  render() {
+    const { navigate } = this.props.navigation;
+    return (
+      <View>
+        <Text>Hello, Chat App!</Text>
+        <Button
+          onPress={() => navigate('Chat')}
+          title="Chat with Lucy"
+        />
+      </View>
+    );
+  }
 }
-}
-var styles = StyleSheet.create({
-container: {
-flex: 1,
-justifyContent: 'center',
-},
-hello: {
-fontSize: 20,
-textAlign: 'center',
-margin: 10,
-},
+
+const SimpleApp = StackNavigator({
+  Home: { screen: HomeScreen },
+  Chat: { screen: ChatScreen },
 });
-AppRegistry.registerComponent('mytestapplication', () => HelloWorld);
+
+//主入口
+AppRegistry.registerComponent('mytestapplication', () => SimpleApp);
