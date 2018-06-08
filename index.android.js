@@ -1,41 +1,21 @@
-
 import React, {
   Component,
 } from 'react';
 //引入component和UI组件
 import {
   AppRegistry,
-  Text,
-  View,
-  Button,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
-// {/**引入ChatScreen组件 */}
-import ChatScreen from './module_coach/CoachMain';
+//主页
+import MainActivity from './module_coach/CoachMain'
+//车次列表
+import CoachLineListActivity from './module_coach/CoachLineList';
 
-
-class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Welcome',
-  };
-  render() {
-    const { navigate } = this.props.navigation;
-    return (
-      <View>
-        <Text>Hello, Chat App!</Text>
-        <Button
-          onPress={() => navigate('Chat')}
-          title="Chat with Lucy"
-        />
-      </View>
-    );
-  }
-}
-
+//总导航
 const SimpleApp = StackNavigator({
-  Home: { screen: HomeScreen },
-  Chat: { screen: ChatScreen },
+  Main: { screen: MainActivity },
+  Lines: { screen: CoachLineListActivity },
 });
 
 //主入口
