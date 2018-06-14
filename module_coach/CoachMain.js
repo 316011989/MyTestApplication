@@ -1,4 +1,3 @@
-
 import React, {
   Component,
 } from 'react';
@@ -45,7 +44,7 @@ export default class MainActivity extends React.Component {
     //右边按钮
     headerRight: (
       <View >
-        <Text style={{ padding: 10 }} onPress={() => alert("hello")}>取消</Text>
+        <Text style={{ padding: 10 }} onPress={() => alert("hello")}> </Text>
       </View>
     ),
     //右边按钮

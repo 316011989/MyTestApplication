@@ -14,6 +14,7 @@ import {
 var REQUEST_URL = 'https://apis.qianbao.com/xingyun/v1/bus/ticket/train?access_token=7ac5dd5af6d59f78529fae9582c5bdc0419fb655';
 
 export default class CoachLineListActivity extends React.Component {
+    _keyExtractor = (item) => item.busNo;
     constructor(props) {
         super(props);
         this.state = {
@@ -31,25 +32,31 @@ export default class CoachLineListActivity extends React.Component {
 
     //渲染
     render() {
+        const { goBack } = this.props.navigation;
         if (!this.state.loaded) {
             return this.renderLoadingView();
         }
 
         return (
             <View style={styles.container}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 10 }}>
-                    <Text style={{ textAlign: 'left', color: '#ff600a' }}>前一天</Text>
-                    <Text style={{ textAlign: 'center' }}>06月12日 星期二</Text>
-                    <Text style={{ textAlign: 'right', color: '#ff600a' }}>后一天</Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={{ textAlign: 'left', color: '#ff600a', padding: 10 }}>前一天</Text>
+                    <Text style={{ textAlign: 'center', padding: 10 }}>06月12日 星期二</Text>
+                    <Text style={{ textAlign: 'right', color: '#ff600a', padding: 10 }}>后一天</Text>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 10, backgroundColor: 'white', borderTopWidth: 0.5, borderBottomWidth: 0.5, borderColor: '#DDDDDD', }}>
-                    <Text style={{ textAlign: 'center' }}>出发(早-晚)</Text>
-                    <Text style={{ textAlign: 'center' }}>按价格(高-低)</Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-around', backgroundColor: 'white', borderTopWidth: 0.5, borderBottomWidth: 0.5, borderColor: '#DDDDDD', padding: 5 }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FF600A', paddingLeft: 15, paddingRight: 15, paddingTop: 5, paddingBottom: 5, borderRadius: 90 }} onPress={() => alert('出发(早-晚)')}>
+                        <Text style={{ textAlign: 'center', color: 'white' }}>出发(早-晚)</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{ backgroundColor: '#FF600A', paddingLeft: 15, paddingRight: 15, paddingTop: 5, paddingBottom: 5, borderRadius: 90 }} onPress={() => alert('按价格(高-低)')}>
+                        <Text style={{ textAlign: 'center', color: 'white' }}>按价格(高-低)</Text>
+                    </TouchableOpacity>
                 </View>
                 <FlatList
                     data={this.state.data}
                     renderItem={this.renderLine}
                     style={{ flex: 1, margin: 10 }}
+                    keyExtractor={this._keyExtractor}
                 />
             </View>
         );
@@ -103,7 +110,7 @@ export default class CoachLineListActivity extends React.Component {
     //渲染车次列表
     renderLine(line) {
         return (
-            <View style={{ flex: 1, backgroundColor: 'white', padding: 15, flexDirection: 'column', borderWidth: 0.5, borderRadius: 3, borderColor: '#DDDDDD', }}>
+            <View style={{ flex: 1, backgroundColor: 'white', padding: 15, borderWidth: 0.5, borderRadius: 3, borderColor: '#DDDDDD', }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white' }}>
                     <Text style={{ fontSize: 26, marginBottom: 8, textAlign: 'center', color: '#ff600a' }}>{line.item.depTime}</Text>
                     <Text style={{ fontSize: 29, marginBottom: 8, textAlign: 'center', color: '#ff600a' }}>{'￥' + line.item.price}</Text>
@@ -127,29 +134,30 @@ export default class CoachLineListActivity extends React.Component {
         this.props.navigation.navigate('Order');
     }
 
+
     //标题栏属性
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
         // 导航栏的标题, 可以是字符串也可以是个组件 会覆盖 title 的值 
         headerTitle: (<Text style={{ color: "#000", fontSize: 16, alignSelf: 'center', textAlign: 'center', flex: 1 }}> {'车次列表'}</Text>),
         //右边按钮
         headerRight: (
             <View >
-                <Text style={{ padding: 10 }} onPress={() => alert("hello")}>取消</Text>
+                <Text style={{ padding: 10 }} onPress={() => alert("hello")}> </Text>
             </View>
         ),
-        //右边按钮
+        //左边按钮
         headerLeft: (
-            <View >
-                <Image source={require('./icon/icon_back.png')} style={{ width: 20, height: 20, marginLeft: 8, marginRight: 8 }} onPress={() => alert("返回")}></Image>
-            </View>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Image source={require('./icon/icon_back.png')} style={{ width: 20, height: 20, marginLeft: 8, marginRight: 8 }}></Image>
+            </TouchableOpacity>
         ),
         //导航栏的title的style
         headerTitleStyle: {
             color: "#000", fontSize: 16, alignSelf: 'center', textAlign: 'center', flex: 1
         },
-        //是否允许右滑返回，在iOS上默认为true，在Android上默认为false
+        //是否允许右滑返回，在iOS上默认为true，在Android上默认为false 
         gesturesEnabled: true,
-    };
+    });
 }
 
 const styles = StyleSheet.create({
