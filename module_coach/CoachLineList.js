@@ -18,8 +18,11 @@ export default class CoachLineListActivity extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loaded: false,
-            data: [],
+            loaded: false,//请求是否加载完成
+            data: [],//请求到的车次数据
+            sort1: true,//排序方式出发时间从早到晚
+            sort2: true,//排序方式价格高-低
+            chooseSortOne: true,//点击排序方式一
         }
         this.fetchData = this.fetchData.bind(this);
         this.renderLine = this.renderLine.bind(this);
@@ -41,15 +44,15 @@ export default class CoachLineListActivity extends React.Component {
             <View style={styles.container}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={{ textAlign: 'left', color: '#ff600a', padding: 10 }}>前一天</Text>
-                    <Text style={{ textAlign: 'center', padding: 10 }}>06月12日 星期二</Text>
+                    <Text style={{ padding: 10 }}>06月12日 星期二</Text>
                     <Text style={{ textAlign: 'right', color: '#ff600a', padding: 10 }}>后一天</Text>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-around', backgroundColor: 'white', borderTopWidth: 0.5, borderBottomWidth: 0.5, borderColor: '#DDDDDD', padding: 5 }}>
-                    <TouchableOpacity style={{ backgroundColor: '#FF600A', paddingLeft: 15, paddingRight: 15, paddingTop: 5, paddingBottom: 5, borderRadius: 90 }} onPress={() => alert('出发(早-晚)')}>
-                        <Text style={{ textAlign: 'center', color: 'white' }}>出发(早-晚)</Text>
+                    <TouchableOpacity style={this.state.chooseSortOne ? styles.sortType1 : styles.sortType2} onPress={this.setSortType1.bind(this)}>
+                        <Text style={{ color: 'black' }}>{this.state.sort1 ? `出发(早-晚)` : `出发(晚-早)`}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FF600A', paddingLeft: 15, paddingRight: 15, paddingTop: 5, paddingBottom: 5, borderRadius: 90 }} onPress={() => alert('按价格(高-低)')}>
-                        <Text style={{ textAlign: 'center', color: 'white' }}>按价格(高-低)</Text>
+                    <TouchableOpacity style={this.state.chooseSortOne ? styles.sortType2 : styles.sortType1} onPress={this.setSortType2.bind(this)}>
+                        <Text style={{ color: 'black' }}>{this.state.sort2 ? `按价格(高-低)` : `按价格(低-高)`}</Text>
                     </TouchableOpacity>
                 </View>
                 <FlatList
@@ -61,6 +64,19 @@ export default class CoachLineListActivity extends React.Component {
             </View>
         );
     }
+
+    setSortType1() {
+        this.setState({
+            sort1: !this.state.sort1,
+            chooseSortOne: true,
+        });
+    };
+    setSortType2() {
+        this.setState({
+            sort2: !this.state.sort2,
+            chooseSortOne: false,
+        });
+    };
 
     //网络请求
     fetchData() {
@@ -173,4 +189,12 @@ const styles = StyleSheet.create({
     },
     orangeText: { color: '#ff600a' },
 
+    //排序方式文字的样式1
+    sortType1: {
+        backgroundColor: '#FF600A', paddingLeft: 15, paddingRight: 15, paddingTop: 5, paddingBottom: 5, borderRadius: 90
+    },
+    //排序方式文字的样式2
+    sortType2: {
+        backgroundColor: 'white', paddingLeft: 15, paddingRight: 15, paddingTop: 5, paddingBottom: 5, borderRadius: 90
+    },
 });
