@@ -49,10 +49,10 @@ export default class CoachLineListActivity extends React.Component {
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-around', backgroundColor: 'white', borderTopWidth: 0.5, borderBottomWidth: 0.5, borderColor: '#DDDDDD', padding: 5 }}>
                     <TouchableOpacity style={this.state.chooseSortOne ? styles.sortType1 : styles.sortType2} onPress={this.setSortType1.bind(this)}>
-                        <Text style={{ color: 'black' }}>{this.state.sort1 ? `出发(早-晚)` : `出发(晚-早)`}</Text>
+                        <Text style={this.state.chooseSortOne ? { color: 'white' } : { color: 'black' }}>{this.state.sort1 ? `出发(早-晚)` : `出发(晚-早)`}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={this.state.chooseSortOne ? styles.sortType2 : styles.sortType1} onPress={this.setSortType2.bind(this)}>
-                        <Text style={{ color: 'black' }}>{this.state.sort2 ? `按价格(高-低)` : `按价格(低-高)`}</Text>
+                        <Text style={this.state.chooseSortOne ? { color: 'black' } : { color: 'white' }}>{this.state.sort2 ? `按价格(高-低)` : `按价格(低-高)`}</Text>
                     </TouchableOpacity>
                 </View>
                 <FlatList
@@ -66,14 +66,22 @@ export default class CoachLineListActivity extends React.Component {
     }
 
     setSortType1() {
+        if (this.state.chooseSortOne) {
+            this.setState({
+                sort1: !this.state.sort1,
+            });
+        }
         this.setState({
-            sort1: !this.state.sort1,
             chooseSortOne: true,
         });
     };
     setSortType2() {
+        if (!this.state.chooseSortOne) {
+            this.setState({
+                sort2: !this.state.sort2,
+            });
+        }
         this.setState({
-            sort2: !this.state.sort2,
             chooseSortOne: false,
         });
     };
@@ -92,7 +100,7 @@ export default class CoachLineListActivity extends React.Component {
                 'Content-Type': 'application/json',
             },
             //参数
-            body: '{"depCity":"北京","depDate":"2018-06-12","arrCity":"上海"}'
+            body: '{"depCity":"北京","depDate":"2018-06-17","arrCity":"上海"}'
         };
 
         fetch(REQUEST_URL, requestOptional)

@@ -9,6 +9,7 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
   TouchableOpacity,
+  NativeModules,
 } from 'react-native';
 
 export default class MainActivity extends React.Component {
@@ -33,7 +34,9 @@ export default class MainActivity extends React.Component {
 
   //查询车票
   checkTicket() {
-    this.props.navigation.navigate('Lines');
+    // this.props.navigation.navigate('Lines');
+    var rnAndroidMethod = NativeModules.XingYun;
+    rnAndroidMethod.getPackageName();
   }
 
   static navigationOptions = {

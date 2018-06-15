@@ -65,8 +65,10 @@ public class MyAppliacation extends Application implements ReactApplication {
 
         @Override
         protected List<ReactPackage> getPackages() {
-            return Arrays.<ReactPackage>asList(
-                    new MainReactPackage()
+            return Arrays.asList(
+                    new MainReactPackage(),
+                    // 实例化注册类
+                    new XingyunReactPackage()
             );
         }
     };
@@ -75,4 +77,5 @@ public class MyAppliacation extends Application implements ReactApplication {
     public ReactNativeHost getReactNativeHost() {
         return mReactNativeHost;
     }
+
 }
